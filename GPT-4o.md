@@ -553,3 +553,90 @@ The server logic for **Module 2** has been implemented in `server.py`. Here's a 
 Let me know if you’d like to proceed with testing or move on to **Module 3**.
 
 ----------
+
+--------------------------------
+
+import os
+import logging
+from mcp.server import Server
+from pydantic import BaseModel
+
+# Set up logging
+LOG_DIR = "../../shared_logs/"
+os.makedirs(LOG_DIR, exist_ok=True)
+
+logging.basicConfig(
+    filename=os.path.join(LOG_DIR, "module3.log"),
+    level=logging.DEBUG,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+)
+logger = logging.getLogger(__name__)
+
+# Initialize the MCP server
+server = Server("MarkdownFinalizer")
+
+# Define input model
+class MarkdownFinalizeInput(BaseModel):
+    filename: str
+    footer: str
+
+@server.call_tool()
+async def finalize_markdown(arguments: dict):
+    """Finalizes a markdown file by adding a footer."""
+    try:
+        # Parse arguments using the input model
+        input_data = MarkdownFinalizeInput(**arguments)
+        filepath = os.path.join("../../", input_data.filename)
+
+        # Check if the file exists
+        if not os.path.exists(filepath):
+            raise FileNotFoundError(f"File not found: {input_data.filename}")
+
+        # Append the footer to the file
+        with open(filepath, "a") as file:
+            file.write(f"\n\n{input_data.footer}")
+
+        logger.info(f"Markdown file finalized: {filepath}")
+        return {"status": "success", "file": input_data.filename}
+    except Exception as e:
+        logger.error(f"Error finalizing markdown file: {e}")
+        raise e
+
+if __name__ == "__main__":
+    logger.info("Starting Markdown Finalizer Server...")
+    server.run()
+
+
+ The server logic for **Module 3** has been implemented in `server.py`. Here's a summary of its functionality:
+
+---
+
+### **Features of Module 3: Markdown Finalizer**
+1. **Receives Input**:
+   - Accepts `filename` (the markdown file to finalize) and `footer` (text to append as the footer).
+
+2. **Finalizes Markdown File**:
+   - Checks if the specified file exists.
+   - Appends the provided footer at the end of the file, separated by two newlines.
+
+3. **Logs Operations**:
+   - Logs file finalization and any errors to `module3.log` in the `shared_logs/` directory.
+
+4. **Returns Status**:
+   - Confirms successful file finalization or raises an error if something goes wrong.
+
+---
+
+### **Next Steps**
+1. **Testing**:
+   - Use MCP Inspector or manual requests to test the server.
+   - Simulate the complete workflow by running all three modules in sequence.
+
+2. **Integration**:
+   - Link Module 3 with the output of Module 2 to form the complete processing pipeline.
+
+3. **Refinements**:
+   - Add more error handling, if necessary.
+   - Optimize logging or expand logging detail based on initial test results.
+
+Let me know if you’d like to proceed with testing, integration, or further refinements!
