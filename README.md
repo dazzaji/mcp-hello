@@ -4,6 +4,9 @@ This is a primative multi-agent modular initialization capability test prototype
 
 The purpose of this initial hello-mcp test is to create an mpc project that uses Claude Desktop as the client and it will create a markdown file that inserts content from an user's input into an existing markdown template including other content.
 
+Template:
+
+The user' goal is [inert the user input text here].  Subsquent work on this project will focus on achieving the user's goal.
 
 
 # Roadmap:
