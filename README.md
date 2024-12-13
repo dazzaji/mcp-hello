@@ -1,4 +1,4 @@
-# mcp-mcp test.
+# Incemental Model Context Protocol
 
 This is a primative multi-agent modular initialization capability test prototype of Model Context Protocol.  
 
