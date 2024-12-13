@@ -1,1 +1,12 @@
- 
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Module 1",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/module1/src/create_markdown_server/__main__.py",
+            "console": "integratedTerminal"
+        }
+    ]
+} 

@@ -77,6 +77,7 @@ mcp-hello/
     *   Server Version: (leave default)
     *   Enable Claude.app integration?: `y`
 
+
 ### **Step 3: Implement Server Logic**
 
 Replace the default content of the `src/create_markdown_server/server.py` file with the following code:

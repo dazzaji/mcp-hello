@@ -164,3 +164,23 @@ cython_debug/
 .DS_Store
 
 hack-sesh-files/
+
+# Virtual Environment
+.env
+.venv
+env/
+venv/
+ENV/
+
+# VS Code
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/settings.json
+
+# Logs
+shared_logs/
+*.log
+
+# Output files
+output.md

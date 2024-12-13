@@ -1,0 +1,19 @@
+[workspace]
+members = ["module1"]
+
+[project]
+name = "markdown-creator"
+version = "0.1.0"
+description = "Creates a markdown file from user input and a template"
+requires-python = ">=3.10"  # Changed from >=3.8
+dependencies = [
+    "mcp",
+    "python-dotenv",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build" 
+
+[tool.uv.workspace]
+members = ["module1/src/create_markdown_server/markdown-creator"]

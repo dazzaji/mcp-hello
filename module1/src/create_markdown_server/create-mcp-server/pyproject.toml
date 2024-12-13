@@ -1,0 +1,17 @@
+[project]
+name = "create-mcp-server"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "dazzaji", email = "dazza@civics.com" }
+]
+requires-python = ">=3.8"
+dependencies = []
+
+[project.scripts]
+create-mcp-server = "create_mcp_server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
