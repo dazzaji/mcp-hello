@@ -96,10 +96,10 @@ from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 
 # Load .env file from project root
-load_dotenv(dotenv_path="../.env")
+load_dotenv(dotenv_path="../../../.env")
 
 # Set up logging
-LOG_DIR = "../../shared_logs/"  # Log to the shared logs directory
+LOG_DIR = "../../../shared_logs/"  # Log to the shared logs directory
 os.makedirs(LOG_DIR, exist_ok=True)
 
 logging.basicConfig(
@@ -130,7 +130,7 @@ async def create_markdown(arguments: dict) -> list[types.TextContent]:
         markdown_content = template.format(content=input_data.content)
 
         # Define output path
-        file_path = os.path.join("../../", "output.md")
+        file_path = os.path.join("../../../", "output.md")
         
         # Write content to the markdown file
         with open(file_path, "w") as file:
@@ -254,7 +254,7 @@ from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 
 # Load .env file from project root
-load_dotenv(dotenv_path="../.env")
+load_dotenv(dotenv_path="../../../.env")
 
 # Set up logging
 LOG_DIR = "../../shared_logs/"  # Log to the shared logs directory
